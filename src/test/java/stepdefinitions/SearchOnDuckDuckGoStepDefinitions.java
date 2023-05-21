@@ -1,4 +1,4 @@
-package starter.stepdefinitions;
+package stepdefinitions;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
@@ -22,12 +22,12 @@ public class SearchOnDuckDuckGoStepDefinitions {
         OnStage.setTheStage(new OnlineCast());
     }
 
-    @Given("^(.*) is on the DuckDuckGo home page")
+    @Given("{string} is on the DuckDuckGo home page")
     public void on_the_DuckDuckGo_home_page(String actor) {
         theActorCalled(actor).attemptsTo(NavigateTo.theDuckDuckGoHomePage());
     }
 
-    @When("she/he searches for {string}")
+    @When("he searches for {string}")
     public void search_for(String term) {
         withCurrentActor(
                 SearchFor.term(term)
@@ -40,4 +40,5 @@ public class SearchOnDuckDuckGoStepDefinitions {
                    .should(seeThat(SearchResult.titles(), everyItem(CoreMatchers.containsStringIgnoringCase(term))));
 
     }
+
 }
