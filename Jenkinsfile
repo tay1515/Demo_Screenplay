@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                bat "mvn -D clean verify"
+                bat "./gradlew clean test"
             }
 
             post {
